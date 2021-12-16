@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import CHOICES
 
 from .models import TeamMember
 # Create your views here.

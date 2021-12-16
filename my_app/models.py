@@ -1,6 +1,5 @@
 from django.db import models
 from phone_field import PhoneField
-from django import forms
 
 
 # Create your models here.

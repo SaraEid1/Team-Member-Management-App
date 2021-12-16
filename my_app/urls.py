@@ -10,5 +10,4 @@ urlpatterns = [
     path ('editMember', views.editMember, name='editMember'),
     path ('deleteMember/<int:member_id>', views.deleteMember, name='deleteMember')
 
-
 ]

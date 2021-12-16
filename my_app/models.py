@@ -13,4 +13,3 @@ class TeamMember (models.Model):
     email = models.EmailField (max_length=250)
     phonenumber = PhoneField(blank=True, help_text='phone number')
     role = models.CharField (max_length=100)
-    #role=forms.CharField(label='Role', widget=forms.RadioSelect(choices=ROLE_CHOICES))

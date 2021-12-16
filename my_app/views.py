@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-
 from .models import TeamMember
+
 # Create your views here.
 def main (request):
     #displaying all the team members
@@ -16,7 +16,8 @@ def addMemberForm (request):
     return render (request, 'my_app/addpage.html')
 
 def addMember (request):
-    if request.method == "POST": #the request must be POST request
+    #the request must be POST request
+    if request.method == "POST": 
         firstname = request.POST.get('firstname')
         lastname = request.POST.get('lastname')
         admin = '(admin)'
@@ -43,7 +44,8 @@ def editMemberForm (request, member_id):
     return render (request, 'my_app/editpage.html', {'member': member})
 
 def editMember (request):
-    if request.method == "POST": #the request must be POST request
+    #the request must be POST request
+    if request.method == "POST": 
         admin = '(admin)'
         id = request.POST.get('id')
         firstname = request.POST.get('firstname')

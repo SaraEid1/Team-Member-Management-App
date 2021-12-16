@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Mnagment Project</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href ="{% static 'my_app/style.css' %}"/>
+  </head>
+  <body>
+
+    <h1> Team members</h1>
+    <h2> You have {{members.length}} team members.</h2>
+    <div><a class = "add" href="{% url 'addForm' %}"> <img src="{% static 'my_app/images/plus.png' %}" id="plus"> </a></div>
+    
+    <dl id="listdl">
+      
+    {% for member in members %}
+        <div>
+            <dt><a href="{% url 'editMemberForm' member.id %}"> <img src="{% static 'my_app/images/blank.png' %}" id="img"> <span class="firstlast"> {{ member.firstname}} {{member.lastname }} {{member.role }}</span></a></dt>
+            <dt><span class="contact"> {{ member.phonenumber}}</span></dt>
+            <dt><span class="contact"> {{ member.email}}</span></dt>
+            
+        </div>
+
+    {% endfor %}
+</dl>
+  </body> 
+</html> 

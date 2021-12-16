@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Mnagment Project</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href ="{% static 'my_app/style.css' %}"/>
+  </head>
+  <body>
+      <form method="POST" action="{% url 'addMember' %}">
+        {% csrf_token %}
+          <h1>Add a team member</h1>
+          <h2 id="h2">Set email, location, and role.</h2>
+
+          <div style="margin: 10px auto; width: 50%">
+            <label> <h3>Info </h3></label>
+          </div>
+
+          <div style="margin: 10px auto; width: 50%">
+            <input type="text" name="firstname" placeholder = "Charlene" class="input">
+          </div>
+
+          <div style="margin: 10px auto; width: 50%">
+            <input type="text" name="lastname" placeholder = "Pham" class="input">
+          </div>
+
+          <div style="margin: 10px auto; width: 50%">
+            <input type="email" name="email" placeholder = "charlene@instawork.com" class="input">
+          </div>
+
+          <div style="margin: 10px auto; width: 50%">
+            <input type="tel" name="phonenumber" placeholder = "415-310-1619" class="input">
+          </div>
+
+          <div style="margin: 10px auto; width: 50%">
+                <label><h3> Role </h3></label>
+            </div>
+
+            <div style="margin: 10px auto; width: 50%">
+                <input type="radio" id="regular" class ="radiobutton" name="role" value="0"checked>
+                <label  for="regular" class="radiotext">Regular - Can't delete members</label>
+              </div>
+              
+              <div style="margin: 10px auto; width: 50%">
+                <input type="radio" id="admin"  class ="radiobutton" name="role" value="1">
+                <label for="admin" class="radiotext">Admin - Can delete members</label>
+              </div>
+              
+
+              <div style="margin: 10px auto; width: 50%">
+                <input type="submit" value="Save" class="button">
+    
+                </div>
+
+      </form>
+    
+  </body> 
+</html> 

@@ -10,8 +10,7 @@ html {
 }
 
 body{
-    height: 80vh;
-    width: 30vw;
+    width: 100vw;
     align-content: center;
     background: white;
     font-family: -apple-system, BlinkMacSystemFont,  Helvetica;
@@ -26,6 +25,13 @@ a {
     color: #000;
     font-weight: bold;
 }
+
+.form-group {
+    width: 80%;
+    vertical-align: middle;
+    margin: auto;
+}
+
 
 h1{
     color: #5a5959;
@@ -51,8 +57,11 @@ h2{
 h3 {
     color: #5a5959;
     font-weight: bold;
-    margin-left: 0px;
-    margin-top: 15px;
+    margin: auto;
+}
+
+#info {
+    margin-bottom: 10px;
 }
 
 dl{
@@ -106,34 +115,9 @@ dl{
     margin-left: 65px;
 }
 
-.input {
-    border: none;
-    appearance: none;
-    -ms-appearance: none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    background: #f2f2f2;
-    padding: 12px;
-    border-radius: 3px;
-    width: 250px;
-    display: inline-block;
-    margin-left: 0px;
-    margin-right: 100px;
-}
-
-input::placeholder{
-    color: #a2a6a6;
-    transition: color 0.3s ease;
-
-}
-
-input:focus::placeholder{
-    color: transparent;
-    
-}
 
 .button {
-    background-color: #4e7cf6; /* Green */
+    background-color: #4e7cf6; 
     border: none;
     color: white;
     padding: 15px 32px;
@@ -146,6 +130,27 @@ input:focus::placeholder{
     position: relative;
     margin-top: 15px;
   }
+
+  .btn{
+    background-color: #4e7cf6; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 5px;
+    position: relative;
+    margin: auto;
+    margin-bottom: 10px;
+    float: right;
+  }
+
+  .btn:hover{
+    background-color: #4e7cf6; 
+
+  }
+
 
   .radiotext{
     font-size: 13.5px;
@@ -179,6 +184,11 @@ input:focus::placeholder{
   }
 
   #delete {
-    float: left;
-    margin-right: 0px;
+    background-color: white;
+    color: red;
+    border: 2px solid #a2a6a6;
+}
+
+.control{
+    background-color: red;
 }

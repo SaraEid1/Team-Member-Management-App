@@ -7,20 +7,21 @@
     <title>Team Mnagment Project</title>
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
 
+
     {% load static %}
     <link rel="stylesheet" type="text/css" href ="{% static 'my_app/style.css' %}"/>
   </head>
   <body>
 
     <h1> Team members</h1>
-    <h2> You have {{members.length}} team members.</h2>
+    <h2> You have {{total_members}} team members.</h2>
     <div><a class = "add" href="{% url 'addForm' %}"> <img src="{% static 'my_app/images/plus.png' %}" id="plus"> </a></div>
     
     <dl id="listdl">
       
-    {% for member in members %}
+    {% for member in form %}
         <div>
-            <dt><a href="{% url 'editMemberForm' member.id %}"> <img src="{% static 'my_app/images/blank.png' %}" id="img"> <span class="firstlast"> {{ member.firstname}} {{member.lastname }} {{member.role }}</span></a></dt>
+            <dt><a href="{% url 'editMemberForm' member.id %}"> <img src="{% static 'my_app/images/blank.png' %}" id="img"> <span class="firstlast"> {{ member.firstname}} {{member.lastname }} {{member.role}} </a></dt>
             <dt><span class="contact"> {{ member.phonenumber}}</span></dt>
             <dt><span class="contact"> {{ member.email}}</span></dt>
             

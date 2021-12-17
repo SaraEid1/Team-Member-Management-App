@@ -1,78 +1,45 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import TeamMember
+from .forms import AddPageForm
 
-# Create your views here.
 def main (request):
-    #displaying all the team members
-    members = TeamMember.objects.all()
-    members.length = len (members) 
-    return render (request, 'my_app/index.html', {'members': members})
+    #displaying all the team members and the count
+    form = TeamMember.objects.all()
+    total_members = form.count()
+    context = {'form':form,'total_members':total_members} 
+    return render (request, 'my_app/index.html',context)
 
-def specific (request):
-    return HttpResponse ("Specific url")
 
 def addMemberForm (request):
-    return render (request, 'my_app/addpage.html')
-
-def addMember (request):
+    form = AddPageForm(initial={'role':' '})
     #the request must be POST request
-    if request.method == "POST": 
-        firstname = request.POST.get('firstname')
-        lastname = request.POST.get('lastname')
-        admin = '(admin)'
-        email = request.POST.get('email')
-        phonenumber = request.POST.get('phonenumber')
-        role = request.POST.get('role')
-        member = TeamMember()
-        member.firstname = firstname
-        member.lastname = lastname
-        member.email = email
-        member.phonenumber = phonenumber
-        if role == "1":
-            member.role = admin
-        else:
-            member.role = ''
-        #adding member into database
-        member.save()
-        return redirect ('main')
-    #in case the request isn't a POST request
-    return redirect ('main')
+    if request.method == "POST":
+        form=AddPageForm(request.POST)
+        #checking the validity of the form to save
+        if form.is_valid():
+            form.save()
+            return redirect ('main')
+    context = {'form': form}
+    return render (request, 'my_app/addpage.html', context)
 
 def editMemberForm (request, member_id):
     member = TeamMember.objects.get (pk=member_id)
-    return render (request, 'my_app/editpage.html', {'member': member})
-
-def editMember (request):
+    form = AddPageForm (instance = member)
     #the request must be POST request
-    if request.method == "POST": 
-        admin = '(admin)'
-        id = request.POST.get('id')
-        firstname = request.POST.get('firstname')
-        lastname = request.POST.get('lastname')
-        email = request.POST.get('email')
-        phonenumber = request.POST.get('phonenumber')
-        role = request.POST.get('role')
-        #get the old member info
-        member = TeamMember.objects.get(pk=id)
-        #update the member info
-        member.firstname = firstname
-        member.lastname = lastname
-        member.email = email
-        member.phonenumber = phonenumber
-        if role == "1":
-            member.role = admin
-        else:
-            member.role = ''
-        #update the member info in database
-        member.save()
-        return redirect ('main')
-    #in case the request isn't a POST request
-    return redirect ('main')
+    if request.method == "POST":
+        form = AddPageForm(request.POST, instance = member)
+        #checking the validity of the form to save
+        if form.is_valid():
+            form.save()
+            return redirect ('main')
+
+    context = {'form': form, 'member': member}
+    return render (request, 'my_app/editpage.html', context)
 
 def deleteMember (request, member_id):
-    member = TeamMember.objects.get (pk=member_id)
-    member.delete()
+    form = TeamMember.objects.get (pk=member_id)
+    form.delete()
     return redirect ('main')
 
 
